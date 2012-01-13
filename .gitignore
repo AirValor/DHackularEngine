@@ -1,0 +1,12 @@
+# dsss
+dsss.last
+dsss_imports
+dsss_objs
+
+# windows
+*.exe
+*.lib
+
+# linux
+*.swp
+*~
