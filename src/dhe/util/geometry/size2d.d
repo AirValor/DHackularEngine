@@ -1,4 +1,4 @@
-module dhe.util.geometry.size;
+module dhe.util.geometry.size2d;
 
 struct Size {
 	private double w;
@@ -8,6 +8,7 @@ struct Size {
 		this.w = w;
 		this.h = h;
 	}
+<<<<<<< HEAD:src/dhe/util/geometry/Size.d
 
 	@property double W() { return w; }
 	@property W(double value) {  w = value; }
@@ -19,3 +20,6 @@ struct Size {
 					mixin("x" ~ op ~ "vector.y"));
 	}
 }
+=======
+}
+>>>>>>> b26c8e43a3542c2eeb4ed12ea1e21f3b93b13601:src/dhe/util/geometry/size2d.d
