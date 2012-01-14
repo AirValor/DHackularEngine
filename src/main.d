@@ -5,8 +5,8 @@ import std.stdio;
 
 void main(string args[])
 {
-	Vector vec = Vector(3, 1);
+	Polar vec = Polar(3, 1);
 
-	writefln("Vector: %s, Point: %s", vec, vec.normalize().getTarget());
+	writefln("PolarPoint: %s, CartesianPoint: %s", vec, vec.normalize().getTarget());
 	readln();
 }

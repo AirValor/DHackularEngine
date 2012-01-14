@@ -1,6 +1,6 @@
 module dhe.util.geometry.size3d;
 
-import dhe.util.geometry.size;
+import dhe.util.geometry.size2d;
 
 struct Size3D {
 	private double d;

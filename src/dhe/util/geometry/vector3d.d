@@ -1,6 +1,6 @@
-module dhe.util.geometry.point3d;
+module dhe.util.geometry.vector3d;
 
-import dhe.util.geometry.point;
+import dhe.util.geometry.vector2d;
 
 struct Point3D {
 	private double z;

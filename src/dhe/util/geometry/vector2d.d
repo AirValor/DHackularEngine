@@ -1,8 +1,8 @@
-module dhe.util.geometry.point;
+module dhe.util.geometry.vector2d;
 
 import std.math;
-import dhe.util.geometry.vector;
-import dhe.util.geometry.point3d;
+import dhe.util.geometry.polar;
+import dhe.util.geometry.vector3d;
 
 struct Point {
 	private double x;
@@ -20,10 +20,17 @@ struct Point {
 					  );
 	}
 
-	Vector getVector() {
-		Vector vector = Vector(x, y);
-		return vector;
+	/**
+	 * Recalculate the coordinates of the Vector into the 
+	 * Polar coordinate system.
+	 *
+	 * Returns: A new polar object
+	 */
+	Polar getPolarCoordinate() {
+		Polar polar = Polar(distance(), atan(y/x));
+		return polar;
 	}
+
 
 	Point3D getPoint3D() {
 		Point3D point3d = Point3D(x, y, 0);

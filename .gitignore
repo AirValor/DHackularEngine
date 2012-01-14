@@ -2,6 +2,7 @@
 dsss.last
 dsss_imports
 dsss_objs
+dsss_docs
 
 # windows
 *.exe

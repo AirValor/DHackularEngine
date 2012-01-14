@@ -1,0 +1,9 @@
+MODULES =
+	$(MODULE_FULL dhe.util.geometry.all)
+	$(MODULE_FULL dhe.util.geometry.matrix)
+	$(MODULE_FULL dhe.util.geometry.polar)
+	$(MODULE_FULL dhe.util.geometry.size2d)
+	$(MODULE_FULL dhe.util.geometry.size3d)
+	$(MODULE_FULL dhe.util.geometry.vector2d)
+	$(MODULE_FULL dhe.util.geometry.vector3d)
+	$(MODULE_FULL dhe.window)

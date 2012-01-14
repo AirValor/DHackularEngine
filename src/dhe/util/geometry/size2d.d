@@ -1,4 +1,4 @@
-module dhe.util.geometry.size;
+module dhe.util.geometry.size2d;
 
 struct Size {
 	private double w;
