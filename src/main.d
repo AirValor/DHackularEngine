@@ -48,7 +48,7 @@ bool InitializeSDL() {
 		return false;
 	}
 
-	SDL_WM_SetCaption("asd", null);
+	SDL_WM_SetCaption("dhe v0.01", null);
 	return true;
 }
 
@@ -59,7 +59,6 @@ void Clean_Up() {
 
 void Load_Resources()
 {
-<<<<<<< HEAD
 	
 }
 
@@ -111,12 +110,6 @@ void CreateWindow() {
 	}
 
 	Clean_Up();
-=======
-	Polar vec = Polar(3, 1);
-
-	writefln("PolarPoint: %s, CartesianPoint: %s", vec, vec.normalize().getTarget());
-	readln();
->>>>>>> b26c8e43a3542c2eeb4ed12ea1e21f3b93b13601
 }
 
 void main(string args[])

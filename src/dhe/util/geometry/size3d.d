@@ -1,6 +1,6 @@
 module dhe.util.geometry.size3d;
 
-import dhe.util.geometry.size;
+import dhe.util.geometry.size2d;
 
 struct Size3D {
 	private double w;
@@ -21,7 +21,7 @@ struct Size3D {
 	@property D(double value) {  d = value; }
 
 	Size3D opBinary(string op)(Size3D size) {
-		return Size(mixin("w" ~ op ~ "size.w"),
+		return Size3D(mixin("w" ~ op ~ "size.w"),
 					mixin("x" ~ op ~ "vector.y"),
 					mixin("z" ~ op ~ "vector.z"));
 	}

@@ -19,9 +19,9 @@ struct Polar {
 					  );
 	}
 
-	Point getTarget() {
-		Point point = Point(radius * cos(angle), radius * sin(angle));
-		return point;
+	Vector2D getTarget() {
+		Vector2D vector = Vector2D(radius * cos(angle), radius * sin(angle));
+		return vector;
 	}
 
 	/**

@@ -1,16 +1,16 @@
 module dhe.util.geometry.rectangle;
 
 import dhe.util.geometry.vector2d;
-import dhe.util.geometry.size;
+import dhe.util.geometry.size2d;
 
 struct Rectangle {
 	private Vector2D position;
-	private Size size;
+	private Size2D size;
 
 	this(double x, double y, double w, double h)
 	{
 		this.position = Vector2D(x, y);
-		this.size = Size(w, h);
+		this.size = Size2D(w, h);
 	}
 
 	@property double X() { return position.X; }
@@ -22,8 +22,8 @@ struct Rectangle {
 	@property double H() { return size.H; }
 	@property H(double value) {  size.H = value; }
 
-	Size opBinary(string op)(Size size) {
-		return Size(mixin("w" ~ op ~ "size.w"),
+	Size2D opBinary(string op)(Size2D size) {
+		return Size2D(mixin("w" ~ op ~ "size.w"),
 					mixin("x" ~ op ~ "vector.y"));
 	}
 

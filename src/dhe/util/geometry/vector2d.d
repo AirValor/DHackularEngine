@@ -1,6 +1,7 @@
 module dhe.util.geometry.vector2d;
 
 import std.math;
+import dhe.util.geometry.polar;
 
 struct Vector2D {
 	private double x;
@@ -29,8 +30,8 @@ struct Vector2D {
 	*
 	* Returns: A new polar object
 	*/
-	Polar getPolarCoordinate() {
-		Polar polar = Polar(distance(), atan(y/x));
+	Polar getPolarCoordinate(Vector2D vector) {
+		Polar polar = Polar(distance(vector), atan(y/x));
 		return polar;
 	}
 
