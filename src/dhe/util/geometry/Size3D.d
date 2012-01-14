@@ -3,15 +3,26 @@ module dhe.util.geometry.size3d;
 import dhe.util.geometry.size;
 
 struct Size3D {
+	private double w;
+	private double h;
 	private double d;
-	private Size size;
 
 	this(double w, double h, double d) {
-		size = Size(w, h);
+		this.w = w;
+		this.h = h;
 		this.d = d;
 	}
 
-	Size getSize() {
-		return size;
+	@property double W() { return w; }
+	@property W(double value) {  w = value; }
+	@property double H() { return h; }
+	@property H(double value) {  h = value; }
+	@property double D() { return d; }
+	@property D(double value) {  d = value; }
+
+	Size3D opBinary(string op)(Size3D size) {
+		return Size(mixin("w" ~ op ~ "size.w"),
+					mixin("x" ~ op ~ "vector.y"),
+					mixin("z" ~ op ~ "vector.z"));
 	}
 }
