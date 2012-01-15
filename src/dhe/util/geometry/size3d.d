@@ -13,12 +13,13 @@ struct Size3D {
 		this.d = d;
 	}
 
-	@property double W() { return w; }
-	@property W(double value) {  w = value; }
-	@property double H() { return h; }
-	@property H(double value) {  h = value; }
-	@property double D() { return d; }
-	@property D(double value) {  d = value; }
+	double getW() {  return w; }
+	double getH() {  return h; }
+	double getD() { return d; }
+
+	void setW(double w) { this.w = w; }
+	void setH(double h) { this.h = h; }
+	void setD(double d) { this.d = d; }
 
 	Size3D opBinary(string op)(Size3D size) {
 		return Size3D(mixin("w" ~ op ~ "size.w"),

@@ -13,15 +13,16 @@ immutable ushort WINDOW_BPP = 32;
 
 SDL_Surface *window = null;
 
-Rectangle r1 = Rectangle(0, 0, 100, 100);
-Rectangle r2 = Rectangle(200, 300, 100, 100);
+Rectangle r1 = Rectangle(100, 200, 100, 100);
+Rectangle r2 = Rectangle(150, 250, 100, 100);
 
 int clr = 0xFFFFFF;
+double velocity = 0.1;
 
 SDL_Event event;
 
 void DrawRect(Rectangle r, int color) {
-	SDL_Rect rect = {cast(short)r.X, cast(short)r.Y, cast(ushort)r.W, cast(ushort)r.H};
+	SDL_Rect rect = {cast(short)r.getX(), cast(short)r.getY(), cast(ushort)r.getW(), cast(ushort)r.getH()};
 	SDL_FillRect(window, &rect, color);
 }
 
@@ -59,7 +60,12 @@ void Clean_Up() {
 
 void Load_Resources()
 {
-	
+	writeln("Use arrow keys to move the box and test the intersects function");
+	auto matrix = new Matrix!uint(5, 4);
+	matrix[3, 2] = 1;
+	matrix.printMatrix();
+	matrix.resize(4, 3);
+	matrix.printMatrix();
 }
 
 void CreateWindow() {
@@ -70,36 +76,24 @@ void CreateWindow() {
 	Load_Resources();
 
 	while (running)	{
-		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT)
-				running = false;
-
-			if (event.type == SDL_KEYDOWN)
-			{
-				SDLKey keypressed = event.key.keysym.sym;
-				switch (keypressed)
-				{
-					case SDLK_ESCAPE:
-						running = false;
-						break;
-					case SDLK_LEFT:
-					//	r1.X -= 15;
-						break;
-					case SDLK_RIGHT:
-					//	r1.X += 15;
-						break;
-					case SDLK_UP:
-					//	r1.Y -= 15;
-						break;
-					case SDLK_DOWN:
-					//	r1.Y += 15;
-						break;
-					default:
-						break;
-				}
-			}
+		while( SDL_PollEvent( &event ) ) { 
+			if( event.type == SDL_QUIT ) { 
+				running = false; 
+			} 
 		}
 
+		ubyte *keystate = SDL_GetKeyState(null);
+
+			if(keystate[SDLK_ESCAPE])
+				running = false;
+			if(keystate[SDLK_LEFT])
+				r1.setX(r1.getX -= velocity);
+			if(keystate[SDLK_RIGHT])
+				r1.setX(r1.getX += velocity);
+			if(keystate[SDLK_UP])
+				r1.setY(r1.getY -= velocity);
+			if(keystate[SDLK_DOWN])
+				r1.setY(r1.getY += velocity);
 
 		clr = r1.intersects(r2) ? 0xFF0000 : 0xFFFFFF;
 

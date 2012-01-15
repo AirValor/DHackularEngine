@@ -13,15 +13,16 @@ struct Vector3D {
 		this.z = z;
 	}
 
-	@property double X() { return x; }
-	@property X(double value) {  x = value; }
-	@property double Y() { return y; }
-	@property Y(double value) {  y = value; }
-	@property double Z() { return z; }
-	@property Z(double value) {  z = value; }
+	ref double getX() { return x; }
+	ref double getY() { return y; }
+	ref double getZ() { return z; }
+	
+	void setX(double x) { this.x = x; }
+	void setY(double y) { this.y = y; }
+	void setZ(double z) { this.z = z; }
 
 	Vector3D opBinary(string op)(Vector3D vector) {
-		return Vector(
+		return Vector3D(
 					  mixin("x" ~ op ~ "vector.y"),
 					  mixin("y" ~ op ~ "vector.y"),
 					  mixin("z" ~ op ~ "vector.z")
@@ -29,9 +30,9 @@ struct Vector3D {
 	}
 
 	double distance(Vector3D vector) {
-		double vectx = vector.X - x;
-		double vecty = vector.Y - y;
-		double vectz = vector.Z - z;
+		double vectx = vector.getX() - x;
+		double vecty = vector.getY() - y;
+		double vectz = vector.getZ() - z;
 
 		double distance = sqrt((vectx * vectx)) + ((vecty * vecty)) + ((vectz * vectz));
 		return distance;
