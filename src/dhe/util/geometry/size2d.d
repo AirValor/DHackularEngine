@@ -9,10 +9,11 @@ struct Size2D {
 		this.h = h;
 	}
 
-	@property double W() { return w; }
-	@property W(double value) {  w = value; }
-	@property double H() { return h; }
-	@property H(double value) {  h = value; }
+	ref double getW() { return w; }
+	ref double getH() { return h; }
+
+	void setW(double w) { this.w = w; }
+	void setH(double h) { this.h = h; }
 
 	Size2D opBinary(string op)(Size2D size) {
 		return Size2D(mixin("w" ~ op ~ "size.w"),

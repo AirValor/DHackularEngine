@@ -12,13 +12,14 @@ struct Vector2D {
 		this.y = y;
 	}
 
-	@property double X() { return x; }
-	@property X(double value) {  x = value; }
-	@property double Y() { return y; }
-	@property Y(double value) {  y = value; }
+	ref double getX() { return x; }
+	ref double getY() { return y; }
+
+	void setX(double x) { this.x = x; }
+	void setY(double y) { this.y = y; }
 
 	Vector2D opBinary(string op)(Vector2D vector) {
-		return Vector(
+		return Vector2D(
 					  mixin("x" ~ op ~ "vector.y"),
 					  mixin("y" ~ op ~ "vector.y")
 					  );
@@ -36,8 +37,8 @@ struct Vector2D {
 	}
 
 	double distance(Vector2D vector) {
-		double vectx = vector.X - x;
-		double vecty = vector.Y - y;
+		double vectx = vector.getX() - x;
+		double vecty = vector.getY() - y;
 
 		double distance = sqrt((vectx * vectx)) + ((vecty * vecty));
 		return distance;

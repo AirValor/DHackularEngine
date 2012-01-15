@@ -12,6 +12,12 @@ struct Polar {
 		this.angle = angle;
 	}
 
+	double getRadius() {  return radius; }
+	double getAngle() {  return angle; }
+
+	void setRadius(double radius) {  this.radius = radius; }
+	void setAngle(double angle) {  this.angle = angle; }
+
 	Vector opBinary(string op)(Vector vector) {
 		return Polar(
 					  mixin("radius" ~ op ~ "vector.radius"),
@@ -29,8 +35,8 @@ struct Polar {
 	 *
 	 * Returns: A polar of r=1 and the same angle as this.angle
 	 */
-	Polar normalize() {
-		Polar polar = Polar(1, angle);
-		return polar;
+	void normalize() {
+		radius = 1;
+		angle = angle;
 	}
 }

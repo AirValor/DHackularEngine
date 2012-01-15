@@ -13,14 +13,15 @@ struct Rectangle {
 		this.size = Size2D(w, h);
 	}
 
-	@property double X() { return position.X; }
-	@property X(double value) {  position.X = value; }
-	@property double Y() { return position.Y; }
-	@property Y(double value) {  position.Y = value; }
-	@property double W() { return size.W; }
-	@property W(double value) {  size.W = value; }
-	@property double H() { return size.H; }
-	@property H(double value) {  size.H = value; }
+	ref double getX() {  return position.getX(); }
+	ref double getY() {  return position.getY(); }
+	ref double getW() { return size.getW(); }
+	ref double getH() { return size.getH(); }
+
+	void setX(double x) {  position.setX(x); }
+	void setY(double y) {  position.setY(y); }
+	void setW(double w) { size.setW(w); }
+	void setH(double h) { size.setH(h); }
 
 	Size2D opBinary(string op)(Size2D size) {
 		return Size2D(mixin("w" ~ op ~ "size.w"),
@@ -29,13 +30,13 @@ struct Rectangle {
 
 	bool contains(Vector2D vector)
 	{
-		return (vector.X > position.X && vector.X < position.X + size.W
-		   && vector.Y > position.Y && vector.Y < position.Y + size.H);
+		return (vector.getX() > position.getX() && vector.getX() < position.getX() + size.getW()
+		   && vector.getY() > position.getY() && vector.getY() < position.getY() + size.getH());
 	}
 
 	bool intersects(Rectangle rect)
 	{
-		return !(rect.position.X > position.X + size.W || rect.position.X + size.W < position.X
-				 || rect.position.Y > position.Y + size.H || rect.position.Y + size.H < position.Y);
+		return !(rect.position.getX() > position.getX() + size.getW() || rect.position.getX() + size.getW() < position.getX()
+				 || rect.position.getY() > position.getY() + size.getH() || rect.position.getY() + size.getH() < position.getY());
 	}
 }
