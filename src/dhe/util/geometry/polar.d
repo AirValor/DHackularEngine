@@ -23,9 +23,9 @@ struct Polar {
 
 	Vector opBinary(string op)(Vector vector) {
 		return Polar(
-				mixin("radius" ~ op ~ "vector.radius"),
-				mixin("angle" ~ op ~ "vector.angle")
-			    );
+			mixin("radius" ~ op ~ "vector.radius"),
+			mixin("angle" ~ op ~ "vector.angle")
+		);
 	}
 
 	Vector2D getTarget() {

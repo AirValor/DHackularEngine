@@ -1,7 +1,7 @@
 module dhe.event.event;
 
 struct Event(alias Source, Data){
-	public:
+public:
 	static auto source = Source;
 	static Data data;
 }

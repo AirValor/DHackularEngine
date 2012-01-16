@@ -17,6 +17,6 @@ struct Size2D {
 
 	Size2D opBinary(string op)(Size2D size) {
 		return Size2D(mixin("w" ~ op ~ "size.w"),
-					mixin("x" ~ op ~ "vector.y"));
+					  mixin("x" ~ op ~ "vector.y"));
 	}
 }

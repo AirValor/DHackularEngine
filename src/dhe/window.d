@@ -46,15 +46,15 @@ public:
 	 * Returns: The instance of Window.
 	 * See_Also: init(int, int, int, int)
 	 */
-	 static Window init(){
+	static Window init(){
 		return null;
-	 }
-	 
-	 /** */
-	 void resize(int x, int y){
-	 }
-	 
-	 /** Add flags to the window settings. */
-	 void addFlags(int flags){
-	 }
+	}
+
+	/** */
+	void resize(int x, int y){
+	}
+
+	/** Add flags to the window settings. */
+	void addFlags(int flags){
+	}
 }

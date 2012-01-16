@@ -23,7 +23,7 @@ struct Size3D {
 
 	Size3D opBinary(string op)(Size3D size) {
 		return Size3D(mixin("w" ~ op ~ "size.w"),
-					mixin("x" ~ op ~ "vector.y"),
-					mixin("z" ~ op ~ "vector.z"));
+					  mixin("x" ~ op ~ "vector.y"),
+					  mixin("z" ~ op ~ "vector.z"));
 	}
 }

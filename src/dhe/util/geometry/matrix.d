@@ -54,7 +54,7 @@ class Matrix(T){
 
 	unittest {
 		auto matrix = new Matrix!uint(5, 4);
-		
+
 		matrix.resize(10, 15);
 		assert(matrix.getColumns() == 10, "Column size not equal to resize.");
 		assert(matrix.getRows() == 15, "Row size not equal to resize.");

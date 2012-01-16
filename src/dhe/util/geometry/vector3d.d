@@ -16,17 +16,16 @@ struct Vector3D {
 	ref double getX() { return x; }
 	ref double getY() { return y; }
 	ref double getZ() { return z; }
-	
+
 	void setX(double x) { this.x = x; }
 	void setY(double y) { this.y = y; }
 	void setZ(double z) { this.z = z; }
 
 	Vector3D opBinary(string op)(Vector3D vector) {
-		return Vector3D(
-					  mixin("x" ~ op ~ "vector.y"),
-					  mixin("y" ~ op ~ "vector.y"),
-					  mixin("z" ~ op ~ "vector.z")
-					  );
+		return Vector3D( mixin("x" ~ op ~ "vector.y"),
+						 mixin("y" ~ op ~ "vector.y"),
+						 mixin("z" ~ op ~ "vector.z")
+		);
 	}
 
 	double distance(Vector3D vector) {
