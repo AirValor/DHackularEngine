@@ -23,7 +23,7 @@
 <script>explorer.outline.addDecl('Vector2D');</script>;
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
-<dd>Represents a point in the Cartesian coordinate system.<br><br>
+<dd>Represents a two-dimensional Vector in the Cartesian coordinate system.<br><br>
 
 
 <script>explorer.outline.incSymbolLevel();</script>
@@ -40,11 +40,46 @@
 <b>Params:</b><br>
 <table><tr>
 <td nowrap valign="top" style="padding-right: 8px">Vector2D <span class="funcparam">vector</span></td>
-<td>The referencepoint to pull the polar origin from</td></tr>
+<td>The reference point to pull the Polar origin from</td></tr>
 </table><br>
 <b>Returns:</b><br>
-A new polar object pointing to the same coordinate as this
-		object<br><br>
+A new Polar object pointing to the same coordinate as this
+		    object<br><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">double 
+<span class="currsymbol">distance</span>
+<script>explorer.outline.addDecl('distance');</script>(Vector2D <span class="funcparam">vector</span>);
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Calculates the 
+<span class="currsymbol">distance</span>
+<script>explorer.outline.addDecl('distance');</script> between two Vectors.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">Vector2D <span class="funcparam">vector</span></td>
+<td>The Vector to calculate with.</td></tr>
+</table><br>
+<b>Returns:</b><br>
+The 
+<span class="currsymbol">distance</span>
+<script>explorer.outline.addDecl('distance');</script> between the two vectors.<br><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">normalize</span>
+<script>explorer.outline.addDecl('normalize');</script>();
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Turns the current Vector into a unit Vector.
+<br><br>
+<b>Returns:</b><br>
+A normalized Vector.<br><br>
 
 </dd>
 </dl>
@@ -56,7 +91,7 @@ A new polar object pointing to the same coordinate as this
 		<tr><td id="docfooter">
 			Page was generated with
 			<img src="candydoc/img/candydoc.gif" style="vertical-align:middle; position:relative; top:-1px">
-			on Mon Jan 16 18:15:56 2012
+			on Mon Jan 16 21:41:10 2012
 
 		</td></tr>
 	</table>
