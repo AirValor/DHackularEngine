@@ -19,7 +19,7 @@ private:
 	 * 	w = width of the window
 	 * 	h = height of the window
 	 * 	d = colorbyte depthcount
-	 *		flags = bitsensitive integer for window settings
+	 *	flags = bitsensitive integer for window settings
 	 */
 	this(int w, int h, int d, int flags){}
 
@@ -33,14 +33,13 @@ public:
 	 * 	w = width of the window
 	 * 	h = height of the window
 	 * 	d = colorbyte depthcount
-	 *		flags = bitsensitive integer for window settings
+	 *	flags = bitsensitive integer for window settings
 	 * Returns: The instance of Window.
 	 * See_Also: addFlags(int), resize(int, int), init()
 	 */
 	static Window init(int w, int h, int d, int flags){
 		return null;
-	 }
-	
+	}
 	/** 
 	 * Cannot run before window was initialized, see init(int, int, int, int).
 	 * 
@@ -59,9 +58,3 @@ public:
 	 void addFlags(int flags){
 	 }
 }
-
-void main(){
-
-}
-
-	
