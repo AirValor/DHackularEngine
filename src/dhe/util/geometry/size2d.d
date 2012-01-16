@@ -1,5 +1,8 @@
 module dhe.util.geometry.size2d;
 
+/**
+* Defines a two-dimensional structure that is used to describe the Size of an object.
+*/
 struct Size2D {
 	private double w;
 	private double h;
@@ -17,6 +20,6 @@ struct Size2D {
 
 	Size2D opBinary(string op)(Size2D size) {
 		return Size2D(mixin("w" ~ op ~ "size.w"),
-					mixin("x" ~ op ~ "vector.y"));
+					  mixin("x" ~ op ~ "vector.y"));
 	}
 }

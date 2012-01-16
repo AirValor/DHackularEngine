@@ -2,6 +2,9 @@ module dhe.util.geometry.size3d;
 
 import dhe.util.geometry.size2d;
 
+/**
+* Defines a three-dimensional structure that is used to describe the Size of an object.
+*/
 struct Size3D {
 	private double w;
 	private double h;
@@ -13,8 +16,8 @@ struct Size3D {
 		this.d = d;
 	}
 
-	double getW() {  return w; }
-	double getH() {  return h; }
+	double getW() { return w; }
+	double getH() { return h; }
 	double getD() { return d; }
 
 	void setW(double w) { this.w = w; }
@@ -23,7 +26,7 @@ struct Size3D {
 
 	Size3D opBinary(string op)(Size3D size) {
 		return Size3D(mixin("w" ~ op ~ "size.w"),
-					mixin("x" ~ op ~ "vector.y"),
-					mixin("z" ~ op ~ "vector.z"));
+					  mixin("x" ~ op ~ "vector.y"),
+					  mixin("z" ~ op ~ "vector.z"));
 	}
 }
