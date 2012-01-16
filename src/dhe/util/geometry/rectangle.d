@@ -25,13 +25,13 @@ struct Rectangle {
 
 	Size2D opBinary(string op)(Size2D size) {
 		return Size2D(mixin("w" ~ op ~ "size.w"),
-					mixin("x" ~ op ~ "vector.y"));
+					  mixin("x" ~ op ~ "vector.y"));
 	}
 
 	bool contains(Vector2D vector)
 	{
 		return (vector.getX() > position.getX() && vector.getX() < position.getX() + size.getW()
-		   && vector.getY() > position.getY() && vector.getY() < position.getY() + size.getH());
+				&& vector.getY() > position.getY() && vector.getY() < position.getY() + size.getH());
 	}
 
 	bool intersects(Rectangle rect)

@@ -3,6 +3,9 @@ module dhe.util.geometry.polar;
 import std.math;
 import dhe.util.geometry.vector2d;
 
+/**
+ * Represents a point in the Polar coordinate system
+ */
 struct Polar {
 	private double radius;
 	private double angle;
@@ -20,9 +23,9 @@ struct Polar {
 
 	Vector opBinary(string op)(Vector vector) {
 		return Polar(
-					  mixin("radius" ~ op ~ "vector.radius"),
-					  mixin("angle" ~ op ~ "vector.angle")
-					  );
+				mixin("radius" ~ op ~ "vector.radius"),
+				mixin("angle" ~ op ~ "vector.angle")
+			    );
 	}
 
 	Vector2D getTarget() {

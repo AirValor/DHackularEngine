@@ -3,6 +3,9 @@ module dhe.util.geometry.vector2d;
 import std.math;
 import dhe.util.geometry.polar;
 
+/**
+ * Represents a point in the Cartesian coordinate system.
+ */
 struct Vector2D {
 	private double x;
 	private double y;
@@ -19,18 +22,21 @@ struct Vector2D {
 	void setY(double y) { this.y = y; }
 
 	Vector2D opBinary(string op)(Vector2D vector) {
-		return Vector2D(
-					  mixin("x" ~ op ~ "vector.y"),
-					  mixin("y" ~ op ~ "vector.y")
-					  );
+		return Vector2D ( mixin("x" ~ op ~ "vector.y"),
+						  mixin("y" ~ op ~ "vector.y")
+		);
 	}
 
 	/**
-	* Recalculate the coordinates of the Vector into the
-	* Polar coordinate system.
-	*
-	* Returns: A new polar object
-	*/
+	 * Recalculate the coordinates of the Vector into the
+	 * Polar coordinate system.
+	 *
+	 * Params:
+	 *		vector = The referencepoint to pull the polar origin from
+	 *
+	 * Returns: A new polar object pointing to the same coordinate as this
+	 *		object
+	 */
 	Polar getPolarCoordinate(Vector2D vector) {
 		Polar polar = Polar(distance(vector), atan(y/x));
 		return polar;
