@@ -41,7 +41,29 @@
 <script>explorer.outline.addDecl('register');</script>(void delegate(E) <span class="funcparam">event</span>);
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
-<dd>Register a member function to be run whenever this source<br><br>
+<dd>Register a member function to be run whenever the source shouts.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">void delegate(E) <span class="funcparam">event</span></td>
+<td>A function that expects an instance of the <span class="funcparam">event</span> structure E.</td></tr>
+</table><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">shout</span>
+<script>explorer.outline.addDecl('shout');</script>(E <span class="funcparam">e</span>);
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Notify all listeners of an event that happened.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">E <span class="funcparam">e</span></td>
+<td>An instance of the event structure with relevant information</td></tr>
+</table><br>
 
 </dd>
 </dl>
@@ -53,7 +75,7 @@
 		<tr><td id="docfooter">
 			Page was generated with
 			<img src="candydoc/img/candydoc.gif" style="vertical-align:middle; position:relative; top:-1px">
-			on Mon Jan 16 21:41:11 2012
+			on Tue Jan 17 00:35:30 2012
 
 		</td></tr>
 	</table>

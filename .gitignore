@@ -11,3 +11,8 @@ dsss_docs
 # linux
 *.swp
 *~
+~.a
+libdhe.a
+libdebug-dhe.a
+example
+test_*dhe

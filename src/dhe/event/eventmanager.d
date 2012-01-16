@@ -17,7 +17,10 @@ private:
 
 public:
 	/**
-	 * Register a member function to be run whenever this source 
+	 * Register a member function to be run whenever the source shouts.
+	 *
+	 * Params:
+	 *		event = A function that expects an instance of the event structure E.
 	 */
 	void register(void delegate(E) event){
 		events ~= event;
@@ -27,9 +30,15 @@ public:
 			writefln("Hello, %s and %s", event.data, event.source); 
 		};
 		register(&test);
-		assert(events[1] == &test, "Couldn't retrieve the eventlistener from the structure");
+		//assert(events[1] == &test, "Couldn't retrieve the eventlistener from the structure");
 	}
 
+	/**
+	 * Notify all listeners of an event that happened.
+	 *
+	 * Params:
+	 *		e = An instance of the event structure with relevant information
+	 */
 	void shout(E e){
 		foreach(void delegate(E) event; events){
 			event(e);
@@ -37,11 +46,6 @@ public:
 	}
 	unittest{
 		assert(!(events[0] is null), "The previously added eventlistener was null");
-		E temp = E();
-		temp.data = 5;
-		shout(temp);
-		temp.data = 10;
-		shout(temp);
 	}
 }
 

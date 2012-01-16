@@ -1,6 +1,7 @@
 module dhe.util.geometry.polar;
 
 import std.math;
+import std.stdio;
 import dhe.util.geometry.vector2d;
 
 /**
@@ -10,9 +11,30 @@ struct Polar {
 	private double radius;
 	private double angle;
 
-	this(double radius, double degree) {
+	this(double radius, double angle) {
+		while(angle < 0) angle += 360.0;
+		while(angle > 359) angle -= 360.0;
 		this.radius = radius;
 		this.angle = angle;
+	}
+	unittest{
+		Polar temp = Polar(5, 124);
+		assert(temp.getRadius() == 5.0, "Basic assignment failed");
+		assert(temp.getAngle() == 124.0, "Basic assignment failed");
+
+		Polar temp1 = Polar(5, 3124.0);
+		assert(temp1.getAngle() == 244.0, "Couldn't rotate the arrow into the " ~
+			   "0-360 degree window");
+
+		Polar temp2 = Polar(5, 364.6);
+		assert(temp2.getAngle() > 4.6, "Couldn't rotate a decimal point arrow into the " ~
+			   "0-360 degree window");
+		assert(temp2.getAngle() < 4.7, "Couldn't rotate a decimal point arrow into the " ~
+			   "0-360 degree window");
+
+		Polar temp3 = Polar(5, -4.0);
+		assert(temp3.getAngle() == 356.0, "Couldn't rotate a negative arrow into the " ~
+			   "0-360 degree window");
 	}
 
 	double getRadius() { return radius; }
