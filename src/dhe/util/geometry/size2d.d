@@ -1,5 +1,8 @@
 module dhe.util.geometry.size2d;
 
+/**
+* Defines a two-dimensional structure that is used to describe the Size of an object.
+*/
 struct Size2D {
 	private double w;
 	private double h;
