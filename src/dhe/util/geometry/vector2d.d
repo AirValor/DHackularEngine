@@ -4,7 +4,7 @@ import std.math;
 import dhe.util.geometry.polar;
 
 /**
- * Represents a two-dimensional Vector in the Cartesian coordinate system.
+ * Represents a two-dimensional Vector in the Cartesian coordinate system. 
  */
 struct Vector2D {
 	private double x;
@@ -21,6 +21,15 @@ struct Vector2D {
 	void setX(double x) { this.x = x; }
 	void setY(double y) { this.y = y; }
 
+	/**
+	 * Does calculations over vector coordinates.
+	 *
+	 * TODO: Make sure all operators actually work as intended
+	 *
+	 * Params:
+	 *		vector = Another vector object to be used as the second operand
+	 * Returns: The result from the operation used.
+	 */
 	Vector2D opBinary(string op)(Vector2D vector) {
 		return Vector2D (mixin("x" ~ op ~ "vector.y"),
 						 mixin("y" ~ op ~ "vector.y"));
@@ -42,14 +51,14 @@ struct Vector2D {
 	}
 
 	/**
-	* Calculates the distance between two Vectors.
-	*
-	* Params:
-	*		vector = The Vector to calculate with.
-	*
-	* Returns: The distance between the two vectors.
-	*
-	*/
+	 * Calculates the distance between two Vectors.
+	 *
+	 * Params:
+	 *		vector = The Vector to calculate with.
+	 *
+	 * Returns: The distance between the two vectors.
+	 *
+	 */
 	double distance(Vector2D vector) {
 		double vectx = vector.getX() - x;
 		double vecty = vector.getY() - y;
@@ -59,11 +68,11 @@ struct Vector2D {
 	}
 
 	/**
-	* Turns the current Vector into a unit Vector.
-	*
-	* Returns: A normalized Vector.
-	*
-	*/
+	 * Turns the current Vector into a unit Vector.
+	 *
+	 * Returns: A normalized Vector.
+	 *
+	 */
 	void normalize() {
 		double length = sqrt((x * x) + (y * y));
 		x = x / length;

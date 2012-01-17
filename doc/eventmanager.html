@@ -38,15 +38,19 @@
 <script>explorer.outline.writeEnabled = true;</script>
 <dt><span class="decl">void 
 <span class="currsymbol">register</span>
-<script>explorer.outline.addDecl('register');</script>(void delegate(E) <span class="funcparam">event</span>);
+<script>explorer.outline.addDecl('register');</script>(shared(void delegate(E)) <span class="funcparam">listener</span>);
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
 <dd>Register a member function to be run whenever the source shouts.
 <br><br>
+Whenever a registered <span class="funcparam">listener</span> is notified, it will be able to
+ access shared data in it's declaration scope.
+
+<br><br>
 <b>Params:</b><br>
 <table><tr>
-<td nowrap valign="top" style="padding-right: 8px">void delegate(E) <span class="funcparam">event</span></td>
-<td>A function that expects an instance of the <span class="funcparam">event</span> structure E.</td></tr>
+<td nowrap valign="top" style="padding-right: 8px">shared(void delegate(E)) <span class="funcparam">listener</span></td>
+<td>A function that expects an instance of the event structure E.</td></tr>
 </table><br>
 
 </dd>
@@ -59,6 +63,10 @@
 <script>explorer.outline.writeEnabled = false;</script>
 <dd>Notify all listeners of an event that happened.
 <br><br>
+Spawns a new thread for each listener, so that heavy eventlistener
+ functions don't delay the subsequent eventlisteners.
+
+<br><br>
 <b>Params:</b><br>
 <table><tr>
 <td nowrap valign="top" style="padding-right: 8px">E <span class="funcparam">e</span></td>
@@ -69,13 +77,23 @@
 </dl>
 <script>explorer.outline.decSymbolLevel();</script>
 </dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">init</span>
+<script>explorer.outline.addDecl('init');</script>();
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Initializes the event thread.<br><br>
+
+</dd>
 </dl>
 <script>explorer.outline.decSymbolLevel();</script>
 </td></tr>
 		<tr><td id="docfooter">
 			Page was generated with
 			<img src="candydoc/img/candydoc.gif" style="vertical-align:middle; position:relative; top:-1px">
-			on Tue Jan 17 00:35:30 2012
+			on Tue Jan 17 19:00:27 2012
 
 		</td></tr>
 	</table>

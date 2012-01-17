@@ -43,7 +43,16 @@ struct Polar {
 	void setRadius(double radius) {	this.radius = radius; }
 	void setAngle(double angle) { this.angle = angle; }
 
-	Vector opBinary(string op)(Vector vector) {
+	/**
+	 * Adds another polar coordinates data to this and returns the resulting new
+	 * polar coordinate.
+	 *
+	 * TODO: Make operators actually work as intended
+	 *
+	 * Params:
+	 *		polar = Another polar coordinate to use as second operand
+	 */
+	Polar opBinary(string op)(Polar polar) {
 		return Polar(mixin("radius" ~ op ~ "vector.radius"),
 					 mixin("angle" ~ op ~ "vector.angle"));
 	}

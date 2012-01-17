@@ -1,8 +1,13 @@
 module dhe.event.event;
 
+/**
+ * An event based on the Source instance and the Data-type
+ */
 struct Event(alias Source, Data){
 public:
+	/// Source instance information
 	static auto source = Source;
+	/// Data from the event
 	static Data data;
 }
 unittest{
