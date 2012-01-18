@@ -73,8 +73,8 @@ unittest{
 	// Shouting a new event
 	assert(i == 10, "Sanity test failed, i wasn't 10 anymore.");
 	runTests.shout(Event!(1, int)());
-	Thread.sleep(dur!("msecs")(1));
-	assert(i == 42, "Threaded event failed to edit outer variable. (try again," ~
+	Thread.sleep(dur!("msecs")(2));
+	assert(i == 42, "Threaded event failed to edit outer variable. (try again, " ~
 		   "might've been a timing error)");
 }
 
