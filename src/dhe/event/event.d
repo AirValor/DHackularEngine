@@ -9,6 +9,10 @@ public:
 	auto source = Source;
 	/// Data from the event
 	Data data;
+
+	this(Data data){
+		this.data = data;
+	}
 }
 unittest{
 	alias Event!(1, int) one;

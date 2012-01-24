@@ -31,7 +31,7 @@
 </dd>
 
 <script>explorer.outline.writeEnabled = true;</script>
-<dt><span class="decl">class 
+<dt><span class="decl">struct 
 <span class="currsymbol">Keyboard</span>
 <script>explorer.outline.addDecl('Keyboard');</script>;
 </span></dt>
@@ -60,8 +60,8 @@ Usage is intended for normal game functionality and only supports a single
 <dl>
 <script>explorer.outline.writeEnabled = true;</script>
 <dt><span class="decl">void 
-<span class="currsymbol">listen</span>
-<script>explorer.outline.addDecl('listen');</script>(Event!("SDL",Keyboard) <span class="funcparam">binding</span>);
+<span class="currsymbol">shout</span>
+<script>explorer.outline.addDecl('shout');</script>(EventInfo <span class="funcparam">event</span>);
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
 <dd>Call this function to manually activate a specific callback function.<br><br>
@@ -70,21 +70,42 @@ Usage is intended for normal game functionality and only supports a single
 
 <script>explorer.outline.writeEnabled = true;</script>
 <dt><span class="decl">void 
-<span class="currsymbol">add</span>
-<script>explorer.outline.addDecl('add');</script>(T)(shared(void delegate(Keyboard info)) <span class="funcparam">callback</span>, T <span class="funcparam">keys</span>...);
+<span class="currsymbol">enable</span>
+<script>explorer.outline.addDecl('enable');</script>(bool <span class="funcparam">value</span> = true);
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
-<dd>Add a callback function to any number of pairs of modifiers and keys.
+<dd>Activate or deactivate this keybinding collection.
 <br><br>
 <b>Params:</b><br>
 <table><tr>
-<td nowrap valign="top" style="padding-right: 8px">callback</td>
+<td nowrap valign="top" style="padding-right: 8px">bool <span class="funcparam">value</span></td>
+<td>Defaults to <b>true</b>, if set to <b>false</b>, this keybinding
+		collection won't respond to events.</td></tr>
+</table><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">add</span>
+<script>explorer.outline.addDecl('add');</script>(Callback <span class="funcparam">callback</span>,...);
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Add a <span class="funcparam">callback</span> function to any number of pairs of modifiers and keys.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">Callback <span class="funcparam">callback</span></td>
 <td>Function to call whenever one of the pairs are activated</td></tr>
 <tr>
 <td nowrap valign="top" style="padding-right: 8px">keys</td>
 <td>Expects pairs of Mod and Key. The modifier information may be
 			KMOD_NONE, but keys may not be undefined.</td></tr>
 </table><br>
+<b>Throws:</b><br>
+RangeError on a zero or uneven count of variadic arguments
+
+<br><br>
 <b>See Also:</b><br>
 Mod, Key, http://sdl.beuc.net/sdl.wiki/SDLMod, http://sdl.beuc.net/sdl.wiki/SDLKey<br><br>
 
@@ -98,7 +119,7 @@ Mod, Key, http://sdl.beuc.net/sdl.wiki/SDLMod, http://sdl.beuc.net/sdl.wiki/SDLK
 		<tr><td id="docfooter">
 			Page was generated with
 			<img src="candydoc/img/candydoc.gif" style="vertical-align:middle; position:relative; top:-1px">
-			on Wed Jan 18 01:06:34 2012
+			on Tue Jan 24 22:15:13 2012
 
 		</td></tr>
 	</table>

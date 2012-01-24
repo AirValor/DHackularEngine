@@ -3,29 +3,65 @@ module dhe.event.activekeybinding;
 import dhe.event.keybinding;
 import dhe.event.event;
 
-private:
-	bool enabled = true;
-	Keybinding binding = null;
-	void sdlListener(Event!("SDL", Keyboard) event){
-		if(binding is null)
-			return;	
-		if(!enabled)
-			return;
+import std.concurrency;
+import core.thread;
 
-		binding.listen(event);
+private:
+Keybinding[] bindings;
+
+void sdlListener(Event!("SDL", immutable Keyboard) event){
+	foreach(Keybinding binding; bindings){
+		if(binding is null) continue;
+		binding.shout(event);
 	}
+}
 
 public:
-	/**
-	 * Set, or unset the currently active keybinding. Only one can be active at
-	 * one time, so they will not collide with eachother.
-	 *
-	 * Params:
-	 *		binding = Keybindings that should react to the SDL events
-	 */
-	void activate(Keybinding binding){}
+/**
+ * Add to the currently active keybindings. While any of the keybindings are
+ * allowed to collide. It's not recommended to utilize this, since threads
+ * are very non-deterministic.
+ *
+ * Params:
+ *		binding = Keybindings that should react to the SDL events
+ */
+void addKeybinding(Keybinding binding){
+	bindings ~= binding;
+}
 
-	/**
-	 * Enable or disable the active keybinding temporarily.
-	 */
-	void enable(bool value = true){}
+/**
+ * Remove a previously added keybinding
+ */
+void removeKeybinding(Keybinding binding){
+	Keybinding[] result;
+	if(binding is null) return;
+	foreach(Keybinding item; bindings){
+		if(item !is binding){
+			result ~= item;
+		}
+	}
+	bindings.clear();
+	bindings = result;
+}
+unittest{
+	Keybinding bind = new Keybinding();
+	Keybinding bind2 = new Keybinding();
+	Keybinding bind3 = new Keybinding();
+	addKeybinding(bind);
+	addKeybinding(bind2);
+
+	assert(bindings == [bind, bind2], "Adding bindings to active keybindings failed");
+
+	removeKeybinding(bind2);
+	assert(bindings == [bind], "Couldn't remove a binding from active keybindings");
+
+	removeKeybinding(bind2);
+	assert(bindings == [bind], 
+		   "Removing a nonstored binding from active keybindings should do anything");
+
+	removeKeybinding(bind);
+	assert(bindings == [], "Couldn't remove the only binding from active keybindings");
+
+	removeKeybinding(bind);
+	assert(bindings == [], "Removing binding from an empty active keybindings failed");
+}

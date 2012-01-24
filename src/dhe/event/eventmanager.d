@@ -1,6 +1,7 @@
 module dhe.event.eventmanager;
 
 import dhe.event.event;
+
 import std.concurrency;
 import core.thread;
 import std.stdio;
