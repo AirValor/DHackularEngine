@@ -1,16 +1,24 @@
 /**
  * Author: Aramande <aramande@hackular.com>
- * Version: 0.1
+ * Version: 0.2
  */
 module dhe.window;
 
+import std.stdio;
+import std.string;
+
+import derelict.sdl.sdl;
+import derelict.sdl.image;
+
 /**
- * Represents a window in which your game runs, can only have one instance.
+ * Represents a window in which your game runs, you can only have one instance.
  */
-class Window{
+final class Window {
 private:
 	static Window self;
 	static bool inited;
+	private SDL_Surface* window;
+	private SDL_Surface* icon;
 
 	/**
 	 * Generates an SDL window using the height, width and depth.
@@ -21,7 +29,9 @@ private:
 	 * 	d = colorbyte depthcount
 	 *	flags = bitsensitive integer for window settings
 	 */
-	this(int w, int h, int d, int flags){}
+	this(int w, int h, int d, int flags){
+		window = SDL_SetVideoMode(w, h, d, flags);
+	}
 
 public:	
 	/** 
@@ -38,7 +48,10 @@ public:
 	 * See_Also: addFlags(int), resize(int, int), init()
 	 */
 	static Window init(int w, int h, int d, int flags){
-		return null;
+		if (self is null)
+			self = new Window(w, h, d, flags);
+
+		return self;
 	}
 	/** 
 	 * Cannot run before window was initialized, see init(int, int, int, int).
@@ -47,7 +60,37 @@ public:
 	 * See_Also: init(int, int, int, int)
 	 */
 	static Window init(){
-		return null;
+		return self;
+	}
+
+	/** 
+	* Get the surface of the Window.
+	*
+	* Returns: The SDL_Surface of window.
+	*/
+	SDL_Surface* getSurface() {
+		return window;
+	}
+
+	/** 
+	* Set the title of the Window.
+	*
+	* Params:
+	* 	title = title of the Window.
+	*/
+	void setTitle(string title) {
+		SDL_WM_SetCaption(toStringz(title), null);
+	}
+
+	/** 
+	* Set the icon of the Window.
+	*
+	* Params:
+	* 	icon = path to the icon.
+	*/
+	void setIcon(string path) {
+		icon = IMG_Load(toStringz(path));
+		SDL_WM_SetIcon(icon, null);
 	}
 
 	/** */
