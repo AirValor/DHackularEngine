@@ -17,7 +17,7 @@
 Aramande <aramande@hackular.com>
 <br><br>
 <b>Version:</b><br>
-0.1<br><br>
+0.2<br><br>
 
 
 <script>explorer.outline.incSymbolLevel();</script>
@@ -28,7 +28,7 @@ Aramande <aramande@hackular.com>
 <script>explorer.outline.addDecl('Window');</script>;
 </span></dt>
 <script>explorer.outline.writeEnabled = false;</script>
-<dd>Represents a window in which your game runs, can only have one instance.<br><br>
+<dd>Represents a window in which your game runs, you can only have one instance.<br><br>
 
 
 <script>explorer.outline.incSymbolLevel();</script>
@@ -90,6 +90,51 @@ The instance of Window.
 </dd>
 
 <script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">SDL_Surface* 
+<span class="currsymbol">getSurface</span>
+<script>explorer.outline.addDecl('getSurface');</script>();
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Get the surface of the Window.
+<br><br>
+<b>Returns:</b><br>
+The SDL_Surface of window.<br><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">setTitle</span>
+<script>explorer.outline.addDecl('setTitle');</script>(string <span class="funcparam">title</span>);
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Set the <span class="funcparam">title</span> of the Window.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">string <span class="funcparam">title</span></td>
+<td><span class="funcparam">title</span> of the Window.</td></tr>
+</table><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
+<dt><span class="decl">void 
+<span class="currsymbol">setIcon</span>
+<script>explorer.outline.addDecl('setIcon');</script>(string <span class="funcparam">path</span>);
+</span></dt>
+<script>explorer.outline.writeEnabled = false;</script>
+<dd>Set the icon of the Window.
+<br><br>
+<b>Params:</b><br>
+<table><tr>
+<td nowrap valign="top" style="padding-right: 8px">icon</td>
+<td><span class="funcparam">path</span> to the icon.</td></tr>
+</table><br>
+
+</dd>
+
+<script>explorer.outline.writeEnabled = true;</script>
 <dt><span class="decl">void 
 <span class="currsymbol">resize</span>
 <script>explorer.outline.addDecl('resize');</script>(int <span class="funcparam">x</span>, int <span class="funcparam">y</span>);
@@ -116,13 +161,17 @@ The instance of Window.
 		<tr><td id="docfooter">
 			Page was generated with
 			<img src="candydoc/img/candydoc.gif" style="vertical-align:middle; position:relative; top:-1px">
-			on Tue Jan 24 22:15:13 2012
+			on Sat Jan 28 02:12:06 2012
 
 		</td></tr>
 	</table>
 </div>
 <script>
+	explorer.packageExplorer.addModule("dhe.util.resource.resource");
+	explorer.packageExplorer.addModule("dhe.util.resource.all");
+	explorer.packageExplorer.addModule("dhe.util.resource.resourcehandler");
 	explorer.packageExplorer.addModule("dhe.util.all");
+	explorer.packageExplorer.addModule("dhe.util.thread");
 	explorer.packageExplorer.addModule("dhe.util.geometry.size2d");
 	explorer.packageExplorer.addModule("dhe.util.geometry.vector3d");
 	explorer.packageExplorer.addModule("dhe.util.geometry.matrix");
@@ -131,11 +180,22 @@ The instance of Window.
 	explorer.packageExplorer.addModule("dhe.util.geometry.size3d");
 	explorer.packageExplorer.addModule("dhe.util.geometry.vector2d");
 	explorer.packageExplorer.addModule("dhe.util.geometry.polar");
+	explorer.packageExplorer.addModule("dhe.io.all");
+	explorer.packageExplorer.addModule("dhe.io.write.threadwriter");
+	explorer.packageExplorer.addModule("dhe.io.write.all");
+	explorer.packageExplorer.addModule("dhe.io.read.parser");
+	explorer.packageExplorer.addModule("dhe.io.read.all");
+	explorer.packageExplorer.addModule("dhe.io.read.threadreader");
+	explorer.packageExplorer.addModule("dhe.io.read.tokenizer");
 	explorer.packageExplorer.addModule("dhe.event.activekeybinding");
 	explorer.packageExplorer.addModule("dhe.event.all");
 	explorer.packageExplorer.addModule("dhe.event.event");
 	explorer.packageExplorer.addModule("dhe.event.eventmanager");
 	explorer.packageExplorer.addModule("dhe.event.keybinding");
 	explorer.packageExplorer.addModule("dhe.all");
-	explorer.packageExplorer.addModule("dhe.window");</script>
+	explorer.packageExplorer.addModule("dhe.window");
+	explorer.packageExplorer.addModule("dhe.gameengine");
+	explorer.packageExplorer.addModule("dhe.graphics.compoundimage");
+	explorer.packageExplorer.addModule("dhe.graphics.all");
+	explorer.packageExplorer.addModule("dhe.graphics.image");</script>
 </body></html>
